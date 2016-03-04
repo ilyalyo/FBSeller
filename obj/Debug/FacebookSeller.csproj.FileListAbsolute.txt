@@ -1,0 +1,17 @@
+c:\users\ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\bin\Debug\FacebookSeller.exe.config
+c:\users\ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\bin\Debug\FacebookSeller.exe
+c:\users\ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\bin\Debug\FacebookSeller.pdb
+c:\users\ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\obj\Debug\FacebookSeller.csprojResolveAssemblyReference.cache
+c:\users\ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\obj\Debug\FacebookSeller.Properties.Resources.resources
+c:\users\ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\obj\Debug\FacebookSeller.csproj.GenerateResource.Cache
+c:\users\ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\obj\Debug\FacebookSeller.exe
+c:\users\ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\obj\Debug\FacebookSeller.pdb
+c:\users\ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\bin\Debug\Newtonsoft.Json.dll
+c:\users\ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\obj\Debug\FacebookSeller.Form1.resources
+C:\Users\Ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\obj\Debug\FacebookSeller.Form2.resources
+C:\Users\Ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\obj\Debug\FacebookSeller.Form3.resources
+C:\Users\Ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\bin\Debug\FacebookSeller.exe.manifest
+C:\Users\Ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\bin\Debug\FacebookSeller.application
+C:\Users\Ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\obj\Debug\FacebookSeller.exe.manifest
+C:\Users\Ilya\documents\visual studio 2012\Projects\FacebookSeller\FacebookSeller\obj\Debug\FacebookSeller.application
