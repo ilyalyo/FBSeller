@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button_add_post = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.pagePost = new System.Windows.Forms.TabPage();
-            this.label7 = new System.Windows.Forms.Label();
+            this.buttonRemoveImg = new System.Windows.Forms.Button();
             this.buttonUploadImg = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
@@ -57,7 +58,6 @@
             this.textBoxFBToken = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.buttonRemoveImg = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.pagePost.SuspendLayout();
             this.pageGroups.SuspendLayout();
@@ -68,16 +68,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 12);
+            this.label1.Location = new System.Drawing.Point(6, 78);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "link Image:";
+            this.label1.Text = "Or link Image:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 108);
+            this.label2.Location = new System.Drawing.Point(3, 120);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 2;
@@ -88,7 +88,7 @@
             this.button_add_post.Location = new System.Drawing.Point(270, 178);
             this.button_add_post.Name = "button_add_post";
             this.button_add_post.Size = new System.Drawing.Size(75, 23);
-            this.button_add_post.TabIndex = 5;
+            this.button_add_post.TabIndex = 6;
             this.button_add_post.Text = "Add";
             this.button_add_post.UseVisualStyleBackColor = true;
             this.button_add_post.Click += new System.EventHandler(this.button_add_post_Click);
@@ -102,12 +102,11 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(364, 233);
-            this.tabControl1.TabIndex = 6;
+            this.tabControl1.TabIndex = 1;
             // 
             // pagePost
             // 
             this.pagePost.Controls.Add(this.buttonRemoveImg);
-            this.pagePost.Controls.Add(this.label7);
             this.pagePost.Controls.Add(this.buttonUploadImg);
             this.pagePost.Controls.Add(this.label6);
             this.pagePost.Controls.Add(this.textBoxName);
@@ -126,22 +125,24 @@
             this.pagePost.Text = "Post";
             this.pagePost.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // buttonRemoveImg
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 51);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(26, 13);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "OR:";
+            this.buttonRemoveImg.Location = new System.Drawing.Point(166, 8);
+            this.buttonRemoveImg.Name = "buttonRemoveImg";
+            this.buttonRemoveImg.Size = new System.Drawing.Size(17, 21);
+            this.buttonRemoveImg.TabIndex = 15;
+            this.buttonRemoveImg.Text = "x";
+            this.buttonRemoveImg.UseVisualStyleBackColor = true;
+            this.buttonRemoveImg.Visible = false;
+            this.buttonRemoveImg.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // buttonUploadImg
             // 
-            this.buttonUploadImg.Location = new System.Drawing.Point(9, 67);
+            this.buttonUploadImg.Image = global::FacebookSeller.Properties.Resources.photo_icon;
+            this.buttonUploadImg.Location = new System.Drawing.Point(9, 6);
             this.buttonUploadImg.Name = "buttonUploadImg";
-            this.buttonUploadImg.Size = new System.Drawing.Size(55, 38);
-            this.buttonUploadImg.TabIndex = 13;
-            this.buttonUploadImg.Text = "Upload Image:";
+            this.buttonUploadImg.Size = new System.Drawing.Size(151, 69);
+            this.buttonUploadImg.TabIndex = 1;
             this.buttonUploadImg.UseVisualStyleBackColor = true;
             this.buttonUploadImg.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -157,16 +158,18 @@
             // textBoxName
             // 
             this.textBoxName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FacebookSeller.Properties.Settings.Default, "name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBoxName.Location = new System.Drawing.Point(6, 163);
+            this.textBoxName.Location = new System.Drawing.Point(8, 178);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(163, 20);
-            this.textBoxName.TabIndex = 11;
+            this.textBoxName.TabIndex = 4;
             this.textBoxName.Text = global::FacebookSeller.Properties.Settings.Default.name;
+            this.textBoxName.Enter += new System.EventHandler(this.textBoxName_Enter);
+            this.textBoxName.Leave += new System.EventHandler(this.textBoxName_Leave);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 147);
+            this.label5.Location = new System.Drawing.Point(3, 162);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 10;
@@ -175,11 +178,13 @@
             // textBoxMessage
             // 
             this.textBoxMessage.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FacebookSeller.Properties.Settings.Default, "message", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBoxMessage.Location = new System.Drawing.Point(8, 124);
+            this.textBoxMessage.Location = new System.Drawing.Point(8, 136);
             this.textBoxMessage.Name = "textBoxMessage";
             this.textBoxMessage.Size = new System.Drawing.Size(163, 20);
-            this.textBoxMessage.TabIndex = 9;
+            this.textBoxMessage.TabIndex = 3;
             this.textBoxMessage.Text = global::FacebookSeller.Properties.Settings.Default.message;
+            this.textBoxMessage.Enter += new System.EventHandler(this.textBoxMessage_Enter);
+            this.textBoxMessage.Leave += new System.EventHandler(this.textBoxMessage_Leave);
             // 
             // richTextDescription
             // 
@@ -187,17 +192,20 @@
             this.richTextDescription.Location = new System.Drawing.Point(209, 28);
             this.richTextDescription.Name = "richTextDescription";
             this.richTextDescription.Size = new System.Drawing.Size(136, 144);
-            this.richTextDescription.TabIndex = 8;
+            this.richTextDescription.TabIndex = 5;
             this.richTextDescription.Text = global::FacebookSeller.Properties.Settings.Default.description;
+            this.richTextDescription.Enter += new System.EventHandler(this.richTextDescription_Enter);
+            this.richTextDescription.Leave += new System.EventHandler(this.richTextDescription_Leave);
             // 
             // textBoxImgLink
             // 
             this.textBoxImgLink.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FacebookSeller.Properties.Settings.Default, "link", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBoxImgLink.Location = new System.Drawing.Point(8, 28);
+            this.textBoxImgLink.Location = new System.Drawing.Point(6, 93);
             this.textBoxImgLink.Name = "textBoxImgLink";
             this.textBoxImgLink.Size = new System.Drawing.Size(164, 20);
-            this.textBoxImgLink.TabIndex = 7;
+            this.textBoxImgLink.TabIndex = 2;
             this.textBoxImgLink.Text = global::FacebookSeller.Properties.Settings.Default.link;
+            this.textBoxImgLink.TextChanged += new System.EventHandler(this.textBoxImgLink_TextChanged);
             // 
             // pageGroups
             // 
@@ -219,7 +227,7 @@
             this.buttonRemoveGroup.Location = new System.Drawing.Point(181, 170);
             this.buttonRemoveGroup.Name = "buttonRemoveGroup";
             this.buttonRemoveGroup.Size = new System.Drawing.Size(75, 23);
-            this.buttonRemoveGroup.TabIndex = 10;
+            this.buttonRemoveGroup.TabIndex = 4;
             this.buttonRemoveGroup.Text = "Remove";
             this.buttonRemoveGroup.UseVisualStyleBackColor = true;
             this.buttonRemoveGroup.Click += new System.EventHandler(this.buttonRemoveGroup_Click);
@@ -230,21 +238,21 @@
             this.listBoxGroups.Location = new System.Drawing.Point(6, 7);
             this.listBoxGroups.Name = "listBoxGroups";
             this.listBoxGroups.Size = new System.Drawing.Size(166, 186);
-            this.listBoxGroups.TabIndex = 9;
+            this.listBoxGroups.TabIndex = 3;
             // 
             // textBoxGroupID
             // 
             this.textBoxGroupID.Location = new System.Drawing.Point(206, 23);
             this.textBoxGroupID.Name = "textBoxGroupID";
             this.textBoxGroupID.Size = new System.Drawing.Size(139, 20);
-            this.textBoxGroupID.TabIndex = 8;
+            this.textBoxGroupID.TabIndex = 1;
             // 
             // buttonAddGroup
             // 
             this.buttonAddGroup.Location = new System.Drawing.Point(206, 49);
             this.buttonAddGroup.Name = "buttonAddGroup";
             this.buttonAddGroup.Size = new System.Drawing.Size(75, 23);
-            this.buttonAddGroup.TabIndex = 7;
+            this.buttonAddGroup.TabIndex = 2;
             this.buttonAddGroup.Text = "Add";
             this.buttonAddGroup.UseVisualStyleBackColor = true;
             this.buttonAddGroup.Click += new System.EventHandler(this.buttonAddGroup_Click);
@@ -280,7 +288,7 @@
             this.linkLabel1.Location = new System.Drawing.Point(11, 188);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(72, 13);
-            this.linkLabel1.TabIndex = 8;
+            this.linkLabel1.TabIndex = 3;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "follow this link";
             this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Blue;
@@ -309,7 +317,7 @@
             this.buttonSaveToken.Location = new System.Drawing.Point(8, 46);
             this.buttonSaveToken.Name = "buttonSaveToken";
             this.buttonSaveToken.Size = new System.Drawing.Size(75, 23);
-            this.buttonSaveToken.TabIndex = 4;
+            this.buttonSaveToken.TabIndex = 2;
             this.buttonSaveToken.Text = "Save";
             this.buttonSaveToken.UseVisualStyleBackColor = true;
             this.buttonSaveToken.Click += new System.EventHandler(this.buttonSaveToken_Click);
@@ -329,7 +337,7 @@
             this.textBoxFBToken.Location = new System.Drawing.Point(8, 20);
             this.textBoxFBToken.Name = "textBoxFBToken";
             this.textBoxFBToken.Size = new System.Drawing.Size(224, 20);
-            this.textBoxFBToken.TabIndex = 5;
+            this.textBoxFBToken.TabIndex = 1;
             this.textBoxFBToken.Text = global::FacebookSeller.Properties.Settings.Default.accessToken;
             // 
             // errorProvider1
@@ -341,27 +349,18 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "All Images|*.BMP;*.DIB;*.RLE;*.JPG;*.JPEG;*.JPE;*.JFIF;*.GIF;*.TIF;*.TIFF;*.PNG";
             // 
-            // buttonRemoveImg
-            // 
-            this.buttonRemoveImg.Location = new System.Drawing.Point(55, 58);
-            this.buttonRemoveImg.Name = "buttonRemoveImg";
-            this.buttonRemoveImg.Size = new System.Drawing.Size(17, 21);
-            this.buttonRemoveImg.TabIndex = 15;
-            this.buttonRemoveImg.Text = "x";
-            this.buttonRemoveImg.UseVisualStyleBackColor = true;
-            this.buttonRemoveImg.Visible = false;
-            this.buttonRemoveImg.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(361, 229);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(377, 268);
             this.MinimumSize = new System.Drawing.Size(377, 268);
             this.Name = "Form1";
             this.Text = "FBSeller";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.pagePost.ResumeLayout(false);
             this.pagePost.PerformLayout();
@@ -401,7 +400,6 @@
         private System.Windows.Forms.TextBox textBoxMessage;
         private System.Windows.Forms.Label labelTokenSaved;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button buttonUploadImg;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button buttonRemoveImg;

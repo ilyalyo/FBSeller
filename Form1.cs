@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace FacebookSeller
 {
@@ -11,12 +12,23 @@ namespace FacebookSeller
         private readonly List<FbGroup> _fbGroups;
         private readonly FbRequest _fbRequest;
         private string _imgFileName;
+
+        //вот это менять:
+        private string plchldrMessage = "Enter message";
+        private string plchldrName = "Enter name";
+        private string plchldrDescription = "Enter description";
         public Form1()
         {
             InitializeComponent();
             _fbRequest = new FbRequest(Properties.Settings.Default.accessToken);
             _fbGroups = LoadGroups();
             BindData();
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.textBoxMessage.Text = plchldrMessage;
+            this.textBoxName.Text = plchldrName;
+            this.richTextDescription.Text = plchldrDescription;
         }
 
         void BindData()
@@ -141,12 +153,13 @@ namespace FacebookSeller
             var result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
-                buttonUploadImg.Text = openFileDialog1.SafeFileName;
+                //buttonUploadImg.Text = openFileDialog1.SafeFileName;
                 textBoxImgLink.Text = "";
                 Properties.Settings.Default.link = "";
                 Properties.Settings.Default.Save();
 
                 _imgFileName = openFileDialog1.FileName;
+                buttonUploadImg.Image = Image.FromFile(_imgFileName).GetThumbnailImage(60, 60, null, IntPtr.Zero);
                 buttonRemoveImg.Visible = true;
             }
         }
@@ -154,8 +167,69 @@ namespace FacebookSeller
         private void button1_Click_1(object sender, EventArgs e)
         {
             _imgFileName = "";
-            buttonUploadImg.Text = @"Upload Image:";
+            textBoxImgLink.Text = "";
+            Properties.Settings.Default.link = "";
+            Properties.Settings.Default.Save();
+            buttonUploadImg.Image = FacebookSeller.Properties.Resources.photo_icon;
             buttonRemoveImg.Visible = false;
+        }
+
+        private void textBoxImgLink_TextChanged(object sender, EventArgs e)
+        {
+            _imgFileName = "";
+            buttonUploadImg.Text = textBoxImgLink.Text;
+            buttonUploadImg.Image = FacebookSeller.Properties.Resources.photo_icon;
+            buttonRemoveImg.Visible = false;
+            Properties.Settings.Default.Save();
+            buttonRemoveImg.Visible = true;
+        }
+
+        private void textBoxMessage_Enter(object sender, EventArgs e)
+        {
+            if (textBoxMessage.Text == plchldrMessage)
+            {
+                textBoxMessage.Text = "";
+            }
+        }
+
+        private void textBoxMessage_Leave(object sender, EventArgs e)
+        {
+            if (textBoxMessage.Text == "")
+            {
+                textBoxMessage.Text = plchldrMessage;
+            }
+        }
+
+        private void textBoxName_Enter(object sender, EventArgs e)
+        {
+            if (textBoxName.Text == plchldrName)
+            {
+                textBoxName.Text = "";
+            }
+        }
+
+        private void textBoxName_Leave(object sender, EventArgs e)
+        {
+            if (textBoxName.Text == "")
+            {
+                textBoxName.Text = plchldrName;
+            }
+        }
+
+        private void richTextDescription_Enter(object sender, EventArgs e)
+        {
+            if (richTextDescription.Text == plchldrDescription)
+            {
+                richTextDescription.Text = "";
+            }
+        }
+
+        private void richTextDescription_Leave(object sender, EventArgs e)
+        {
+            if (textBoxName.Text == "")
+            {
+                richTextDescription.Text = plchldrDescription;
+            }
         }
     }
 }
