@@ -65,7 +65,7 @@ namespace FacebookSeller
             var client = new WebClient();
             try
             {
-                var result = client.UploadFile(postUrl, "POST", @"C:\temp\images.jpg");
+                var result = client.UploadFile(postUrl, "POST", fbPost.Source);
             }
             catch (Exception)
             {
