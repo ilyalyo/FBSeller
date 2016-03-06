@@ -78,9 +78,21 @@ namespace FacebookSeller
         private void button_add_post_Click(object sender, EventArgs e)
         {
             var link = textBoxImgLink.Text;
-            var message = textBoxMessage.Text;
-            var name = textBoxName.Text;
-            var description = richTextDescription.Text;
+            string message = textBoxMessage.Text;
+            string name;
+            string description;
+            if (textBoxMessage.Text == plchldrMessage)
+                message = "";
+            else
+                message = textBoxMessage.Text;
+            if (textBoxName.Text == plchldrName)
+                name = "";
+            else
+                name = textBoxName.Text;
+            if (richTextDescription.Text == plchldrDescription)
+                description = "";
+            else
+                description = richTextDescription.Text;
 
             Properties.Settings.Default.link = link;
             Properties.Settings.Default.message = message;
@@ -90,7 +102,7 @@ namespace FacebookSeller
 
             if (
                 (!String.IsNullOrEmpty(_imgFileName) 
-                ||  !String.IsNullOrEmpty(link) 
+                || !String.IsNullOrEmpty(link) 
                 || !String.IsNullOrEmpty(message)
                 )
                 && _fbRequest.IsValidToken())
@@ -103,7 +115,10 @@ namespace FacebookSeller
                 if (String.IsNullOrEmpty(link) && String.IsNullOrEmpty(message))
                     errorProvider1.SetError(button_add_post, "You should choose message or photo");                
                 else
-                    errorProvider1.SetError(button_add_post, "Token is invalid");                
+                    errorProvider1.SetError(button_add_post, "Token is invalid");
+                textBoxMessage_Leave(this, e);
+                textBoxName_Leave(this, e);
+                richTextDescription_Leave(this, e);
             }
         }
 
@@ -226,7 +241,7 @@ namespace FacebookSeller
 
         private void richTextDescription_Leave(object sender, EventArgs e)
         {
-            if (textBoxName.Text == "")
+            if (richTextDescription.Text == "")
             {
                 richTextDescription.Text = plchldrDescription;
             }
